@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Lora, Nunito } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getLocale } from "next-intl/server";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 import "./globals.css";
 
 const lora = Lora({
@@ -28,10 +29,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const messages = await getMessages();
+  const locale = await getLocale();
   return (
-    <html lang="en" className={`${lora.variable} ${nunito.variable}`}>
+    <html lang={locale} className={`${lora.variable} ${nunito.variable}`}>
       <body className="bg-bg font-sans text-lc-text min-h-screen">
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages} locale={locale}>
+          <div className="fixed top-4 right-4 z-40">
+            <LocaleSwitcher />
+          </div>
           {children}
         </NextIntlClientProvider>
       </body>
