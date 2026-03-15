@@ -3,5 +3,64 @@
     "title": "How many Saturdays do you have left?",
     "description": "Visualize the time remaining with the people and companions you love. Every square is a day, a week, a moment — make each one count.",
     "cta": "Start Counting"
+  },
+  "dashboard": {
+    "reminder_label": "Today's Reminder",
+    "reminder_message": "You have {weeks} Saturdays left with {name}",
+    "empty_title": "Start with someone you love",
+    "empty_description": "Add a person or pet to see how much time you have left together.",
+    "add": "Add someone"
+  },
+  "form": {
+    "add_title": "Add someone",
+    "edit_title": "Edit",
+    "emoji": "Emoji",
+    "color": "Color",
+    "name": "Name",
+    "birth_date": "Birth date",
+    "lifespan": "Expected lifespan (years)",
+    "first_met": "First met (optional)",
+    "frequency": "How often you meet",
+    "frequency_count": "Times per period",
+    "not_set": "Not set",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "cancel": "Cancel",
+    "save": "Save",
+    "add_btn": "Add"
+  },
+  "detail": {
+    "born": "Born {date} · Expected lifespan: {years} years",
+    "grid_label": "Each square = 1 {unit}",
+    "lived": "lived",
+    "today": "today",
+    "remaining": "remaining",
+    "ratio_title": "Time Spent Together vs. Remaining",
+    "ratio_passed": "{percent}% of time together already passed",
+    "ratio_remaining": "{percent}% remaining",
+    "days_remaining": "Days remaining",
+    "meetups_remaining": "Meetups remaining",
+    "birthdays_left": "Birthdays left",
+    "springs": "Springs left",
+    "summers": "Summers left",
+    "autumns": "Autumns left",
+    "winters": "Winters left",
+    "share": "Share",
+    "copied": "Copied!",
+    "exceeded": "Exceeded expected lifespan — every day is a gift"
+  },
+  "units": {
+    "days": "Days",
+    "weeks": "Weeks",
+    "months": "Months",
+    "day": "day",
+    "week": "week",
+    "month": "month"
+  },
+  "card": {
+    "weeks_left": "weeks left",
+    "years_left": "years left",
+    "born": "Born {year} · Expected {lifespan} yrs"
   }
 }

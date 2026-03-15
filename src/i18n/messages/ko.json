@@ -1,0 +1,66 @@
+{
+  "landing": {
+    "title": "남은 토요일이 몇 번일까요?",
+    "description": "사랑하는 사람, 반려동물과 함께할 수 있는 남은 시간을 시각화하세요. 하루하루, 한 주 한 주를 소중히.",
+    "cta": "시작하기"
+  },
+  "dashboard": {
+    "reminder_label": "오늘의 알림",
+    "reminder_message": "{name}과(와) 남은 토요일: {weeks}번",
+    "empty_title": "사랑하는 사람을 추가해보세요",
+    "empty_description": "함께할 수 있는 남은 시간을 확인해보세요.",
+    "add": "추가하기"
+  },
+  "form": {
+    "add_title": "추가하기",
+    "edit_title": "수정",
+    "emoji": "이모지",
+    "color": "색상",
+    "name": "이름",
+    "birth_date": "생년월일",
+    "lifespan": "예상 수명 (년)",
+    "first_met": "처음 만난 날 (선택)",
+    "frequency": "만남 빈도",
+    "frequency_count": "횟수",
+    "not_set": "설정 안 함",
+    "weekly": "매주",
+    "monthly": "매월",
+    "yearly": "매년",
+    "cancel": "취소",
+    "save": "저장",
+    "add_btn": "추가"
+  },
+  "detail": {
+    "born": "{date} 출생 · 예상 수명: {years}세",
+    "grid_label": "한 칸 = 1{unit}",
+    "lived": "지남",
+    "today": "오늘",
+    "remaining": "남음",
+    "ratio_title": "함께한 시간 vs 남은 시간",
+    "ratio_passed": "함께한 시간의 {percent}%가 지났습니다",
+    "ratio_remaining": "{percent}% 남음",
+    "days_remaining": "남은 일수",
+    "meetups_remaining": "남은 만남",
+    "birthdays_left": "남은 생일",
+    "springs": "남은 봄",
+    "summers": "남은 여름",
+    "autumns": "남은 가을",
+    "winters": "남은 겨울",
+    "share": "공유",
+    "copied": "복사됨!",
+    "exceeded": "예상 수명을 초과했습니다 — 하루하루가 선물입니다"
+  },
+  "units": {
+    "days": "일",
+    "weeks": "주",
+    "months": "월",
+    "day": "일",
+    "week": "주",
+    "month": "월"
+  },
+  "card": {
+    "weeks_left": "주 남음",
+    "years_left": "년 남음",
+    "born": "{year}년생 · 예상 {lifespan}세"
+  }
+}
