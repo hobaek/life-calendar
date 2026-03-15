@@ -29,6 +29,8 @@ A warm, emotional web app that visualizes remaining time with loved ones (parent
   - Opens modal with form: name, birth date, expected lifespan, (optional) meeting frequency
 
 ### Detail Grid Page (`/view/[id]`)
+- Also accessible via `/view?data=eyJuYW1l...` for shared links (base64-encoded subject JSON)
+- Route logic: check for `data` query param first → decode and render; otherwise load from localStorage by `[id]`
 - **Header:** Back button, subject name, birth info, Share button
 - **Unit Toggle:** Days / Weeks / Months — switches grid rendering
 - **Life Grid:** Main visualization
@@ -45,8 +47,11 @@ A warm, emotional web app that visualizes remaining time with loved ones (parent
 interface Subject {
   id: string;                    // UUID
   name: string;                  // Display name
+  emoji: string;                 // Avatar emoji (e.g., "👩", "🐶")
+  avatarColor: "coral" | "lavender" | "mint"; // Avatar background color
   birthDate: string;             // ISO date "YYYY-MM-DD"
   expectedLifespan: number;      // Years
+  firstMetDate?: string;         // ISO date — when you first met (defaults to birthDate)
   meetingFrequency?: {           // Optional
     type: "weekly" | "monthly" | "yearly";
     count: number;               // e.g., 2 = twice per month
@@ -55,17 +60,24 @@ interface Subject {
 }
 ```
 
+### Subject Management
+- **Add:** via `AddSubjectModal` — includes emoji picker and avatar color selection
+- **Edit:** long-press or edit icon on `SubjectCard` → opens same modal pre-filled
+- **Delete:** swipe or delete button in edit mode, with confirmation dialog
+
 ## Storage Strategy
 
 ### localStorage
 - Key: `life-calendar-subjects`
 - Value: JSON array of `Subject` objects
-- Loaded on dashboard mount, saved on any mutation
+- Loaded client-side only via `useEffect` (avoids SSR hydration mismatch)
+- Saved on any mutation (add, edit, delete)
 
 ### URL Sharing
-- Share button encodes subject data as base64 in query parameter
+- Share button encodes **single subject** data as base64 in query parameter
 - URL format: `/view?data=eyJuYW1l...`
 - Recipients can view the grid without localStorage
+- Sharing is per-subject only (from detail page), not bulk
 - No server required
 
 ## Calculation Logic (Client-Side)
@@ -74,15 +86,27 @@ All calculations run in the browser:
 
 - **Remaining days** = (birthDate + expectedLifespan in years) - today
 - **Remaining weeks** = remainingDays / 7
-- **Remaining months** = remainingDays / 30.44
-- **Remaining meetups** = based on meetingFrequency × remaining time
+- **Remaining months** = calendar month difference between today and end date (not days/30.44)
+- **Remaining meetups:**
+  - If `type = "weekly"` and `count = 2`: `2 × remainingWeeks`
+  - If `type = "monthly"` and `count = 2`: `2 × remainingMonths`
+  - If `type = "yearly"` and `count = 3`: `3 × remainingYears`
 - **Remaining seasons** = remaining years (rounded), one per season type
-- **Time ratio** = (today - first meeting estimate) / total expected overlap
+- **Time ratio** = (today - firstMetDate) / (endDate - firstMetDate). If `firstMetDate` is not set, defaults to subject's `birthDate`
 - **Grid cells:**
   - Total = expectedLifespan × (365 | 52 | 12) depending on unit
   - Filled = age in current unit
   - Today = current position
   - Empty = remaining
+- **Grid column layout:**
+  - Weeks: 52 columns (1 row = 1 year)
+  - Months: 12 columns (1 row = 1 year)
+  - Days: 365 columns (1 row = 1 year) — may require horizontal scroll on mobile
+
+### Edge Cases
+- **Subject older than expected lifespan:** show grid as 100% filled, display "exceeded expected lifespan" message
+- **Zero subjects on dashboard:** show welcome message with prompt to add first subject
+- **Day-level grid performance:** 31,000+ DOM elements — use CSS `contain: strict` on grid container; if performance issues arise, consider canvas rendering
 
 ## UI Design
 
@@ -101,6 +125,9 @@ All calculations run in the browser:
 | text-light | `#8A7E7E` | Secondary text |
 | empty | `#F0E6DC` | Empty grid cells |
 | today | `#FF6B6B` | Today marker (with pulse) |
+| filled-alt | `#FFB088` | Alternating filled grid cells (subtle stripe) |
+| warm-gray | `#6B6161` | Borders, muted elements |
+| light-gray | `#E8E0D8` | Card borders, dashed outlines |
 
 ### Typography
 - **Headings:** Lora (serif), 600-700 weight
@@ -122,6 +149,7 @@ All calculations run in the browser:
 - Initial supported locales: `en`, `ko`
 - All user-facing strings in message files, no hardcoded text
 - Locale switcher in header/footer
+- No locale-prefixed routes for v1 (middleware-based detection, simpler setup)
 
 ## Components
 
@@ -129,13 +157,13 @@ All calculations run in the browser:
 |-----------|-------|-------------|
 | `SubjectCard` | subject: Subject | Dashboard card with mini grid |
 | `LifeGrid` | subject, unit | Main grid visualization |
-| `AddSubjectModal` | onSave | Form modal for new subject |
+| `SubjectFormModal` | onSave, subject? | Form modal for add/edit subject (pre-fills if editing) |
 | `DailyReminder` | subjects: Subject[] | Rotating reminder bar |
 | `SeasonCounter` | remainingYears | 4 season cards |
 | `TimeRatioBar` | spent, remaining | Percentage bar |
 | `UnitToggle` | value, onChange | Day/Week/Month toggle |
 | `ShareButton` | subject | Copies share URL |
-| `MiniGrid` | subject | Small preview grid for cards |
+| `MiniGrid` | subject | Simplified ratio-based preview grid (not cell-accurate) |
 
 ## Non-Goals (v1)
 
