@@ -9,7 +9,11 @@
     "reminder_message": "{name}과(와) 남은 토요일: {weeks}번",
     "empty_title": "사랑하는 사람을 추가해보세요",
     "empty_description": "함께할 수 있는 남은 시간을 확인해보세요.",
-    "add": "추가하기"
+    "add": "추가하기",
+    "onboarding_title": "먼저, 나에 대해 알려주세요",
+    "onboarding_description": "생년월일과 예상 수명을 입력하면, 사랑하는 사람과 함께할 수 있는 시간을 정확하게 계산합니다.",
+    "onboarding_step2_title": "이제, 소중한 사람을 추가하세요",
+    "onboarding_step2_description": "부모님, 연인, 반려동물 — 함께하는 시간이 소중한 누구든."
   },
   "form": {
     "add_title": "추가하기",

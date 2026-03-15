@@ -9,7 +9,11 @@
     "reminder_message": "You have {weeks} Saturdays left with {name}",
     "empty_title": "Start with someone you love",
     "empty_description": "Add a person or pet to see how much time you have left together.",
-    "add": "Add someone"
+    "add": "Add someone",
+    "onboarding_title": "First, tell us about you",
+    "onboarding_description": "We need your birth date and expected lifespan to calculate how much time you have left together with the people you love.",
+    "onboarding_step2_title": "Now, add someone you love",
+    "onboarding_step2_description": "A parent, a partner, a pet — anyone whose time with you matters."
   },
   "form": {
     "add_title": "Add someone",
