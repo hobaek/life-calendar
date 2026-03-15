@@ -40,6 +40,8 @@
     "ratio_passed": "{percent}% of time together already passed",
     "ratio_remaining": "{percent}% remaining",
     "days_remaining": "Days remaining",
+    "weeks_remaining": "Weeks remaining",
+    "months_remaining": "Months remaining",
     "meetups_remaining": "Meetups remaining",
     "birthdays_left": "Birthdays left",
     "springs": "Springs left",

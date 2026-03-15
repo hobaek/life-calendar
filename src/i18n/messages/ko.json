@@ -40,6 +40,8 @@
     "ratio_passed": "함께한 시간의 {percent}%가 지났습니다",
     "ratio_remaining": "{percent}% 남음",
     "days_remaining": "남은 일수",
+    "weeks_remaining": "남은 주수",
+    "months_remaining": "남은 개월수",
     "meetups_remaining": "남은 만남",
     "birthdays_left": "남은 생일",
     "springs": "남은 봄",

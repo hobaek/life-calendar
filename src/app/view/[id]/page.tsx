@@ -7,6 +7,8 @@ import { Subject, GridUnit } from "@/lib/types";
 import { getSubjects, decodeSubjectFromUrl } from "@/lib/storage";
 import {
   getRemainingDays,
+  getRemainingWeeks,
+  getRemainingMonths,
   getRemainingMeetups,
   getRemainingSeasons,
   getRemainingYears,
@@ -43,10 +45,19 @@ function DetailPageInner() {
   if (!subject) return null;
 
   const days = getRemainingDays(subject);
+  const weeks = getRemainingWeeks(subject);
+  const months = getRemainingMonths(subject);
   const meetups = getRemainingMeetups(subject);
   const seasons = getRemainingSeasons(subject);
   const birthdays = getRemainingYears(subject);
   const ratio = getTimeRatio(subject);
+
+  // Show the primary stat based on selected unit
+  const primaryStat = unit === "days"
+    ? { value: days, label: t("days_remaining"), icon: "📅" }
+    : unit === "weeks"
+    ? { value: weeks, label: t("weeks_remaining"), icon: "📅" }
+    : { value: months, label: t("months_remaining"), icon: "📅" };
 
   return (
     <main className="max-w-[900px] mx-auto p-6">
@@ -102,9 +113,9 @@ function DetailPageInner() {
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-card-bg rounded-card p-5 shadow-card">
-          <div className="text-2xl mb-2">📅</div>
-          <div className="font-serif text-[28px] font-bold text-coral">{days.toLocaleString()}</div>
-          <div className="text-[13px] text-lc-text-light mt-1">{t("days_remaining")}</div>
+          <div className="text-2xl mb-2">{primaryStat.icon}</div>
+          <div className="font-serif text-[28px] font-bold text-coral">{primaryStat.value.toLocaleString()}</div>
+          <div className="text-[13px] text-lc-text-light mt-1">{primaryStat.label}</div>
         </div>
         {meetups !== null && (
           <div className="bg-card-bg rounded-card p-5 shadow-card">
