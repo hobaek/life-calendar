@@ -100,7 +100,7 @@ const UNIT_MULTIPLIER: Record<GridUnit, number> = {
   months: 12,
 };
 const UNIT_COLUMNS: Record<GridUnit, number> = {
-  days: 365,
+  days: 52,
   weeks: 52,
   months: 12,
 };
