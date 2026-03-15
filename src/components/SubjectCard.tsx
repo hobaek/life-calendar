@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Subject } from "@/lib/types";
 import { getRemainingWeeks, getRemainingYears } from "@/lib/calculations";
 import { AVATAR_COLOR_MAP } from "@/lib/constants";
 import MiniGrid from "./MiniGrid";
 
 export default function SubjectCard({ subject }: { subject: Subject }) {
+  const t = useTranslations("card");
   const weeks = getRemainingWeeks(subject);
   const years = getRemainingYears(subject);
   const colorCfg = AVATAR_COLOR_MAP[subject.avatarColor];
@@ -25,8 +27,10 @@ export default function SubjectCard({ subject }: { subject: Subject }) {
               {subject.name}
             </div>
             <div className="text-[13px] text-lc-text-light">
-              Born {new Date(subject.birthDate).getFullYear()} · Expected{" "}
-              {subject.expectedLifespan} yrs
+              {t("born", {
+                year: new Date(subject.birthDate).getFullYear(),
+                lifespan: subject.expectedLifespan,
+              })}
             </div>
           </div>
         </div>
@@ -35,11 +39,11 @@ export default function SubjectCard({ subject }: { subject: Subject }) {
             <div className="text-2xl font-bold text-coral">
               {weeks.toLocaleString()}
             </div>
-            <div className="text-xs text-lc-text-light">weeks left</div>
+            <div className="text-xs text-lc-text-light">{t("weeks_left")}</div>
           </div>
           <div>
             <div className="text-2xl font-bold text-coral">{years}</div>
-            <div className="text-xs text-lc-text-light">years left</div>
+            <div className="text-xs text-lc-text-light">{t("years_left")}</div>
           </div>
         </div>
         <MiniGrid subject={subject} />

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useTranslations } from "next-intl";
 import { Subject, AvatarColor } from "@/lib/types";
 import { AVATAR_COLORS, DEFAULT_EMOJIS } from "@/lib/constants";
 
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function SubjectFormModal({ onSave, onClose, subject }: Props) {
+  const t = useTranslations("form");
   const [name, setName] = useState(subject?.name ?? "");
   const [emoji, setEmoji] = useState(subject?.emoji ?? "👩");
   const [avatarColor, setAvatarColor] = useState<AvatarColor>(
@@ -61,12 +63,12 @@ export default function SubjectFormModal({ onSave, onClose, subject }: Props) {
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="font-serif text-xl font-semibold mb-4">
-          {subject ? "Edit" : "Add someone"}
+          {subject ? t("edit_title") : t("add_title")}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="text-sm text-lc-text-light block mb-1">
-              Emoji
+              {t("emoji")}
             </label>
             <div className="flex gap-2 flex-wrap">
               {DEFAULT_EMOJIS.map((e) => (
@@ -87,7 +89,7 @@ export default function SubjectFormModal({ onSave, onClose, subject }: Props) {
           </div>
           <div>
             <label className="text-sm text-lc-text-light block mb-1">
-              Color
+              {t("color")}
             </label>
             <div className="flex gap-2">
               {AVATAR_COLORS.map((c) => (
@@ -108,7 +110,7 @@ export default function SubjectFormModal({ onSave, onClose, subject }: Props) {
           </div>
           <div>
             <label className="text-sm text-lc-text-light block mb-1">
-              Name
+              {t("name")}
             </label>
             <input
               type="text"
@@ -120,7 +122,7 @@ export default function SubjectFormModal({ onSave, onClose, subject }: Props) {
           </div>
           <div>
             <label className="text-sm text-lc-text-light block mb-1">
-              Birth date
+              {t("birth_date")}
             </label>
             <input
               type="date"
@@ -132,7 +134,7 @@ export default function SubjectFormModal({ onSave, onClose, subject }: Props) {
           </div>
           <div>
             <label className="text-sm text-lc-text-light block mb-1">
-              Expected lifespan (years)
+              {t("lifespan")}
             </label>
             <input
               type="number"
@@ -146,7 +148,7 @@ export default function SubjectFormModal({ onSave, onClose, subject }: Props) {
           </div>
           <div>
             <label className="text-sm text-lc-text-light block mb-1">
-              First met (optional)
+              {t("first_met")}
             </label>
             <input
               type="date"
@@ -158,22 +160,22 @@ export default function SubjectFormModal({ onSave, onClose, subject }: Props) {
           <div className="grid grid-cols-2 gap-2">
             <div>
               <label className="text-sm text-lc-text-light block mb-1">
-                How often you meet
+                {t("frequency")}
               </label>
               <select
                 value={freqType}
                 onChange={(e) => setFreqType(e.target.value)}
                 className="w-full px-3 py-2 rounded-xl border border-light-gray bg-bg focus:outline-none focus:border-coral"
               >
-                <option value="">Not set</option>
-                <option value="weekly">Weekly</option>
-                <option value="monthly">Monthly</option>
-                <option value="yearly">Yearly</option>
+                <option value="">{t("not_set")}</option>
+                <option value="weekly">{t("weekly")}</option>
+                <option value="monthly">{t("monthly")}</option>
+                <option value="yearly">{t("yearly")}</option>
               </select>
             </div>
             <div>
               <label className="text-sm text-lc-text-light block mb-1">
-                Times per period
+                {t("frequency_count")}
               </label>
               <input
                 type="number"
@@ -191,13 +193,13 @@ export default function SubjectFormModal({ onSave, onClose, subject }: Props) {
               onClick={onClose}
               className="flex-1 py-2.5 rounded-button text-lc-text-light font-semibold border border-light-gray hover:bg-empty transition-all"
             >
-              Cancel
+              {t("cancel")}
             </button>
             <button
               type="submit"
               className="flex-1 py-2.5 rounded-button bg-coral text-white font-semibold hover:opacity-90 transition-all"
             >
-              {subject ? "Save" : "Add"}
+              {subject ? t("save") : t("add_btn")}
             </button>
           </div>
         </form>

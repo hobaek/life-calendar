@@ -1,12 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { GridUnit } from "@/lib/types";
-
-const UNITS: { value: GridUnit; label: string }[] = [
-  { value: "days", label: "Days" },
-  { value: "weeks", label: "Weeks" },
-  { value: "months", label: "Months" },
-];
 
 export default function UnitToggle({
   value,
@@ -15,6 +10,14 @@ export default function UnitToggle({
   value: GridUnit;
   onChange: (unit: GridUnit) => void;
 }) {
+  const t = useTranslations("units");
+
+  const UNITS: { value: GridUnit; label: string }[] = [
+    { value: "days", label: t("days") },
+    { value: "weeks", label: t("weeks") },
+    { value: "months", label: t("months") },
+  ];
+
   return (
     <div className="flex gap-1 bg-card-bg rounded-xl p-1 shadow-card w-fit">
       {UNITS.map((unit) => (

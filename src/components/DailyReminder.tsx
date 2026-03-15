@@ -1,10 +1,13 @@
 "use client";
 
 import { useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Subject } from "@/lib/types";
 import { getRemainingWeeks } from "@/lib/calculations";
 
 export default function DailyReminder({ subjects }: { subjects: Subject[] }) {
+  const t = useTranslations("dashboard");
+
   const reminder = useMemo(() => {
     if (subjects.length === 0) return null;
     const dayOfYear = Math.floor(
@@ -21,14 +24,13 @@ export default function DailyReminder({ subjects }: { subjects: Subject[] }) {
   return (
     <div className="bg-gradient-to-br from-coral-light to-lavender-light rounded-card px-6 py-5 mb-7 text-center">
       <div className="text-[13px] text-lc-text-light uppercase tracking-wider mb-1">
-        Today&apos;s Reminder
+        {t("reminder_label")}
       </div>
       <div className="font-serif text-[22px] font-semibold">
-        You have{" "}
-        <span className="text-coral text-[28px] font-bold">
-          {reminder.weeks.toLocaleString()}
-        </span>{" "}
-        Saturdays left with {reminder.name}
+        {t("reminder_message", {
+          weeks: reminder.weeks.toLocaleString(),
+          name: reminder.name,
+        })}
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Subject } from "@/lib/types";
 import { getSubjects, addSubject, updateSubject, deleteSubject } from "@/lib/storage";
 import SubjectCard from "@/components/SubjectCard";
@@ -8,6 +9,7 @@ import SubjectFormModal from "@/components/SubjectFormModal";
 import DailyReminder from "@/components/DailyReminder";
 
 export default function DashboardPage() {
+  const t = useTranslations("dashboard");
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [editingSubject, setEditingSubject] = useState<Subject | undefined>();
@@ -50,11 +52,11 @@ export default function DashboardPage() {
       {subjects.length === 0 && (
         <div className="text-center py-20">
           <div className="text-5xl mb-4">💛</div>
-          <h2 className="font-serif text-2xl font-semibold mb-2">Start with someone you love</h2>
-          <p className="text-lc-text-light mb-6">Add a person or pet to see how much time you have left together.</p>
+          <h2 className="font-serif text-2xl font-semibold mb-2">{t("empty_title")}</h2>
+          <p className="text-lc-text-light mb-6">{t("empty_description")}</p>
           <button onClick={() => setShowModal(true)}
             className="px-8 py-3 bg-coral text-white rounded-button font-bold hover:opacity-90 transition-all">
-            Add someone
+            {t("add")}
           </button>
         </div>
       )}
@@ -75,7 +77,7 @@ export default function DashboardPage() {
           <button onClick={() => { setEditingSubject(undefined); setShowModal(true); }}
             className="bg-card-bg rounded-card p-5 shadow-card border-2 border-dashed border-light-gray flex flex-col items-center justify-center min-h-[180px] text-lc-text-light hover:border-coral hover:text-coral transition-all">
             <div className="text-4xl mb-2">+</div>
-            <div className="text-sm font-semibold">Add someone</div>
+            <div className="text-sm font-semibold">{t("add")}</div>
           </button>
         </div>
       )}
