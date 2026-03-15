@@ -3,6 +3,8 @@ import { Lora, Nunito } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getLocale } from "next-intl/server";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const lora = Lora({
@@ -20,7 +22,31 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: "Life Calendar — How many Saturdays do you have left?",
   description:
-    "Visualize the time remaining with the people and companions you love.",
+    "Visualize the time remaining with the people and companions you love. Every square is a day, a week, a moment — make each one count.",
+  keywords: [
+    "life calendar",
+    "memento mori",
+    "time visualization",
+    "remaining time",
+    "life grid",
+    "weeks left",
+  ],
+  openGraph: {
+    title: "Life Calendar — How many Saturdays do you have left?",
+    description:
+      "Visualize the time remaining with the people and companions you love.",
+    url: "https://life-calendar-gray.vercel.app",
+    siteName: "Life Calendar",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Life Calendar — How many Saturdays do you have left?",
+    description:
+      "Visualize the time remaining with the people and companions you love.",
+  },
+  metadataBase: new URL("https://life-calendar-gray.vercel.app"),
 };
 
 export default async function RootLayout({
@@ -39,6 +65,8 @@ export default async function RootLayout({
           </div>
           {children}
         </NextIntlClientProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
