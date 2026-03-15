@@ -1,10 +1,10 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { decodeSubjectFromUrl } from "@/lib/storage";
 
-export default function SharedViewPage() {
+function SharedViewInner() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -17,4 +17,12 @@ export default function SharedViewPage() {
   }, [searchParams, router]);
 
   return null;
+}
+
+export default function SharedViewPage() {
+  return (
+    <Suspense>
+      <SharedViewInner />
+    </Suspense>
+  );
 }

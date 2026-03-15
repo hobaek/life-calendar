@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useParams, useSearchParams, useRouter } from "next/navigation";
 import { Subject, GridUnit } from "@/lib/types";
 import { getSubjects, decodeSubjectFromUrl } from "@/lib/storage";
@@ -17,7 +17,7 @@ import SeasonCounter from "@/components/SeasonCounter";
 import TimeRatioBar from "@/components/TimeRatioBar";
 import ShareButton from "@/components/ShareButton";
 
-export default function DetailPage() {
+function DetailPageInner() {
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -115,5 +115,13 @@ export default function DetailPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function DetailPage() {
+  return (
+    <Suspense>
+      <DetailPageInner />
+    </Suspense>
   );
 }
