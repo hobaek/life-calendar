@@ -1,5 +1,5 @@
-import { Subject } from "./types";
-import { STORAGE_KEY } from "./constants";
+import { Subject, UserProfile } from "./types";
+import { STORAGE_KEY, PROFILE_STORAGE_KEY } from "./constants";
 
 export function getSubjects(): Subject[] {
   if (typeof window === "undefined") return [];
@@ -32,6 +32,21 @@ export function updateSubject(updated: Subject): void {
 export function deleteSubject(id: string): void {
   const subjects = getSubjects().filter((s) => s.id !== id);
   saveSubjects(subjects);
+}
+
+export function getUserProfile(): UserProfile | null {
+  if (typeof window === "undefined") return null;
+  const raw = localStorage.getItem(PROFILE_STORAGE_KEY);
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
+export function saveUserProfile(profile: UserProfile): void {
+  localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
 }
 
 export function encodeSubjectForUrl(subject: Subject): string {

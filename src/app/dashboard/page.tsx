@@ -2,23 +2,31 @@
 
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { Subject } from "@/lib/types";
-import { getSubjects, addSubject, updateSubject, deleteSubject } from "@/lib/storage";
+import { Subject, UserProfile } from "@/lib/types";
+import { getSubjects, addSubject, updateSubject, deleteSubject, getUserProfile, saveUserProfile } from "@/lib/storage";
 import SubjectCard from "@/components/SubjectCard";
 import SubjectFormModal from "@/components/SubjectFormModal";
 import DailyReminder from "@/components/DailyReminder";
+import UserProfileSetup from "@/components/UserProfileSetup";
 
 export default function DashboardPage() {
   const t = useTranslations("dashboard");
   const [subjects, setSubjects] = useState<Subject[]>([]);
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [editingSubject, setEditingSubject] = useState<Subject | undefined>();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     setSubjects(getSubjects());
+    setUserProfile(getUserProfile());
     setLoaded(true);
   }, []);
+
+  function handleProfileSave(profile: UserProfile) {
+    saveUserProfile(profile);
+    setUserProfile(profile);
+  }
 
   function handleSave(subject: Subject) {
     if (editingSubject) {
@@ -47,7 +55,8 @@ export default function DashboardPage() {
 
   return (
     <main className="max-w-[900px] mx-auto p-6">
-      <DailyReminder subjects={subjects} />
+      <UserProfileSetup profile={userProfile} onSave={handleProfileSave} />
+      <DailyReminder subjects={subjects} userProfile={userProfile} />
 
       {subjects.length === 0 && (
         <div className="text-center py-20">
@@ -65,7 +74,7 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
           {subjects.map((s) => (
             <div key={s.id} className="relative group">
-              <SubjectCard subject={s} />
+              <SubjectCard subject={s} userProfile={userProfile} />
               <div className="absolute top-2 right-2 hidden group-hover:flex gap-1">
                 <button onClick={(e) => { e.preventDefault(); handleEdit(s); }}
                   className="w-8 h-8 rounded-full bg-card-bg shadow-card text-sm flex items-center justify-center hover:bg-empty">✏️</button>

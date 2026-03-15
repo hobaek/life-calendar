@@ -2,15 +2,21 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Subject } from "@/lib/types";
+import { Subject, UserProfile } from "@/lib/types";
 import { getRemainingWeeks, getRemainingYears } from "@/lib/calculations";
 import { AVATAR_COLOR_MAP } from "@/lib/constants";
 import MiniGrid from "./MiniGrid";
 
-export default function SubjectCard({ subject }: { subject: Subject }) {
+export default function SubjectCard({
+  subject,
+  userProfile,
+}: {
+  subject: Subject;
+  userProfile?: UserProfile | null;
+}) {
   const t = useTranslations("card");
-  const weeks = getRemainingWeeks(subject);
-  const years = getRemainingYears(subject);
+  const weeks = getRemainingWeeks(subject, userProfile);
+  const years = getRemainingYears(subject, userProfile);
   const colorCfg = AVATAR_COLOR_MAP[subject.avatarColor];
 
   return (

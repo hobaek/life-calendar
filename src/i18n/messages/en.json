@@ -60,6 +60,16 @@
     "week": "week",
     "month": "month"
   },
+  "profile": {
+    "title": "About You",
+    "description": "Set your birth date and expected lifespan so we can calculate how much time you have left together — not just their time.",
+    "birth_date": "Your birth date",
+    "lifespan": "Expected age",
+    "save": "Save",
+    "cancel": "Cancel",
+    "your_info": "You",
+    "years_short": " yrs"
+  },
   "card": {
     "weeks_left": "weeks left",
     "years_left": "years left",

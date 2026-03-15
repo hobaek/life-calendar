@@ -60,6 +60,16 @@
     "week": "주",
     "month": "월"
   },
+  "profile": {
+    "title": "내 정보",
+    "description": "생년월일과 예상 수명을 설정하면, 상대방과 함께할 수 있는 시간을 더 정확하게 계산합니다.",
+    "birth_date": "생년월일",
+    "lifespan": "예상 수명",
+    "save": "저장",
+    "cancel": "취소",
+    "your_info": "나",
+    "years_short": "세"
+  },
   "card": {
     "weeks_left": "주 남음",
     "years_left": "년 남음",

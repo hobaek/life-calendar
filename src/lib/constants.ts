@@ -24,3 +24,4 @@ export const DEFAULT_EMOJIS = [
 ];
 
 export const STORAGE_KEY = "life-calendar-subjects";
+export const PROFILE_STORAGE_KEY = "life-calendar-profile";

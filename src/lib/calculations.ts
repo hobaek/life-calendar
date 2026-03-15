@@ -1,6 +1,6 @@
-import { Subject, GridUnit } from "./types";
+import { Subject, GridUnit, UserProfile } from "./types";
 
-function getEndDate(subject: Subject): Date {
+function getSubjectEndDate(subject: Subject): Date {
   const birth = new Date(subject.birthDate);
   return new Date(
     birth.getFullYear() + subject.expectedLifespan,
@@ -9,19 +9,45 @@ function getEndDate(subject: Subject): Date {
   );
 }
 
-export function getRemainingDays(subject: Subject): number {
-  const end = getEndDate(subject);
+function getUserEndDate(profile: UserProfile): Date {
+  const birth = new Date(profile.birthDate);
+  return new Date(
+    birth.getFullYear() + profile.expectedLifespan,
+    birth.getMonth(),
+    birth.getDate(),
+  );
+}
+
+// The effective end date is the earlier of subject's end or user's end
+function getEndDate(subject: Subject, userProfile?: UserProfile | null): Date {
+  const subjectEnd = getSubjectEndDate(subject);
+  if (!userProfile) return subjectEnd;
+  const userEnd = getUserEndDate(userProfile);
+  return subjectEnd < userEnd ? subjectEnd : userEnd;
+}
+
+export function getRemainingDays(
+  subject: Subject,
+  userProfile?: UserProfile | null,
+): number {
+  const end = getEndDate(subject, userProfile);
   const today = new Date();
   const diff = end.getTime() - today.getTime();
   return Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
 }
 
-export function getRemainingWeeks(subject: Subject): number {
-  return Math.floor(getRemainingDays(subject) / 7);
+export function getRemainingWeeks(
+  subject: Subject,
+  userProfile?: UserProfile | null,
+): number {
+  return Math.floor(getRemainingDays(subject, userProfile) / 7);
 }
 
-export function getRemainingMonths(subject: Subject): number {
-  const end = getEndDate(subject);
+export function getRemainingMonths(
+  subject: Subject,
+  userProfile?: UserProfile | null,
+): number {
+  const end = getEndDate(subject, userProfile);
   const today = new Date();
   if (end <= today) return 0;
   return (
@@ -30,8 +56,11 @@ export function getRemainingMonths(subject: Subject): number {
   );
 }
 
-export function getRemainingYears(subject: Subject): number {
-  const end = getEndDate(subject);
+export function getRemainingYears(
+  subject: Subject,
+  userProfile?: UserProfile | null,
+): number {
+  const end = getEndDate(subject, userProfile);
   const today = new Date();
   if (end <= today) return 0;
   let years = end.getFullYear() - today.getFullYear();
@@ -43,32 +72,41 @@ export function getRemainingYears(subject: Subject): number {
   return Math.max(0, years);
 }
 
-export function getRemainingMeetups(subject: Subject): number | null {
+export function getRemainingMeetups(
+  subject: Subject,
+  userProfile?: UserProfile | null,
+): number | null {
   if (!subject.meetingFrequency) return null;
   const { type, count } = subject.meetingFrequency;
   switch (type) {
     case "weekly":
-      return count * getRemainingWeeks(subject);
+      return count * getRemainingWeeks(subject, userProfile);
     case "monthly":
-      return count * getRemainingMonths(subject);
+      return count * getRemainingMonths(subject, userProfile);
     case "yearly":
-      return count * getRemainingYears(subject);
+      return count * getRemainingYears(subject, userProfile);
   }
 }
 
-export function getRemainingSeasons(subject: Subject): {
+export function getRemainingSeasons(
+  subject: Subject,
+  userProfile?: UserProfile | null,
+): {
   spring: number;
   summer: number;
   autumn: number;
   winter: number;
 } {
-  const years = getRemainingYears(subject);
+  const years = getRemainingYears(subject, userProfile);
   return { spring: years, summer: years, autumn: years, winter: years };
 }
 
-export function getTimeRatio(subject: Subject): number {
+export function getTimeRatio(
+  subject: Subject,
+  userProfile?: UserProfile | null,
+): number {
   const startDate = new Date(subject.firstMetDate ?? subject.birthDate);
-  const endDate = getEndDate(subject);
+  const endDate = getEndDate(subject, userProfile);
   const today = new Date();
   const totalSpan = endDate.getTime() - startDate.getTime();
   if (totalSpan <= 0) return 1;

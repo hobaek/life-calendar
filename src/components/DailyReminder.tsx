@@ -2,10 +2,16 @@
 
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
-import { Subject } from "@/lib/types";
+import { Subject, UserProfile } from "@/lib/types";
 import { getRemainingWeeks } from "@/lib/calculations";
 
-export default function DailyReminder({ subjects }: { subjects: Subject[] }) {
+export default function DailyReminder({
+  subjects,
+  userProfile,
+}: {
+  subjects: Subject[];
+  userProfile?: UserProfile | null;
+}) {
   const t = useTranslations("dashboard");
 
   const reminder = useMemo(() => {
@@ -15,9 +21,9 @@ export default function DailyReminder({ subjects }: { subjects: Subject[] }) {
         (1000 * 60 * 60 * 24),
     );
     const subject = subjects[dayOfYear % subjects.length];
-    const weeks = getRemainingWeeks(subject);
+    const weeks = getRemainingWeeks(subject, userProfile);
     return { name: subject.name, weeks };
-  }, [subjects]);
+  }, [subjects, userProfile]);
 
   if (!reminder) return null;
 

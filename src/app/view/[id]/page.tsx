@@ -3,8 +3,8 @@
 import { useState, useEffect, Suspense } from "react";
 import { useParams, useSearchParams, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Subject, GridUnit } from "@/lib/types";
-import { getSubjects, decodeSubjectFromUrl } from "@/lib/storage";
+import { Subject, GridUnit, UserProfile } from "@/lib/types";
+import { getSubjects, decodeSubjectFromUrl, getUserProfile } from "@/lib/storage";
 import {
   getRemainingDays,
   getRemainingWeeks,
@@ -26,9 +26,11 @@ function DetailPageInner() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [subject, setSubject] = useState<Subject | null>(null);
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [unit, setUnit] = useState<GridUnit>("weeks");
 
   useEffect(() => {
+    setUserProfile(getUserProfile());
     const data = searchParams.get("data");
     if (data) {
       const decoded = decodeSubjectFromUrl(data);
@@ -44,13 +46,13 @@ function DetailPageInner() {
 
   if (!subject) return null;
 
-  const days = getRemainingDays(subject);
-  const weeks = getRemainingWeeks(subject);
-  const months = getRemainingMonths(subject);
-  const meetups = getRemainingMeetups(subject);
-  const seasons = getRemainingSeasons(subject);
-  const birthdays = getRemainingYears(subject);
-  const ratio = getTimeRatio(subject);
+  const days = getRemainingDays(subject, userProfile);
+  const weeks = getRemainingWeeks(subject, userProfile);
+  const months = getRemainingMonths(subject, userProfile);
+  const meetups = getRemainingMeetups(subject, userProfile);
+  const seasons = getRemainingSeasons(subject, userProfile);
+  const birthdays = getRemainingYears(subject, userProfile);
+  const ratio = getTimeRatio(subject, userProfile);
 
   // Show the primary stat based on selected unit
   const primaryStat = unit === "days"
