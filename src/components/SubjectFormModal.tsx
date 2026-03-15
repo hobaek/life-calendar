@@ -54,10 +54,7 @@ export default function SubjectFormModal({ onSave, onClose, subject }: Props) {
   }
 
   return (
-    <div
-      className="fixed inset-0 bg-black/30 flex items-center justify-center z-50 p-4"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50 p-4">
       <div
         className="bg-card-bg rounded-card p-6 w-full max-w-md shadow-card-hover"
         onClick={(e) => e.stopPropagation()}
