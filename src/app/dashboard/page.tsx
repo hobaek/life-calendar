@@ -23,9 +23,29 @@ export default function DashboardPage() {
     setLoaded(true);
   }, []);
 
+  const ME_SUBJECT_ID = "me";
+
   function handleProfileSave(profile: UserProfile) {
     saveUserProfile(profile);
     setUserProfile(profile);
+
+    // Auto-create or update "Me" subject
+    const existing = getSubjects().find((s) => s.id === ME_SUBJECT_ID);
+    const meSubject: Subject = {
+      id: ME_SUBJECT_ID,
+      name: "Me",
+      emoji: "🪞",
+      avatarColor: "lavender",
+      birthDate: profile.birthDate,
+      expectedLifespan: profile.expectedLifespan,
+      createdAt: existing?.createdAt ?? new Date().toISOString().split("T")[0],
+    };
+    if (existing) {
+      updateSubject(meSubject);
+    } else {
+      addSubject(meSubject);
+    }
+    setSubjects(getSubjects());
   }
 
   function handleSave(subject: Subject) {
@@ -75,12 +95,14 @@ export default function DashboardPage() {
           {subjects.map((s) => (
             <div key={s.id} className="relative group">
               <SubjectCard subject={s} userProfile={userProfile} />
-              <div className="absolute top-2 right-2 hidden group-hover:flex gap-1">
-                <button onClick={(e) => { e.preventDefault(); handleEdit(s); }}
-                  className="w-8 h-8 rounded-full bg-card-bg shadow-card text-sm flex items-center justify-center hover:bg-empty">✏️</button>
-                <button onClick={(e) => { e.preventDefault(); handleDelete(s.id); }}
-                  className="w-8 h-8 rounded-full bg-card-bg shadow-card text-sm flex items-center justify-center hover:bg-empty">🗑</button>
-              </div>
+              {s.id !== ME_SUBJECT_ID && (
+                <div className="absolute top-2 right-2 hidden group-hover:flex gap-1">
+                  <button onClick={(e) => { e.preventDefault(); handleEdit(s); }}
+                    className="w-8 h-8 rounded-full bg-card-bg shadow-card text-sm flex items-center justify-center hover:bg-empty">✏️</button>
+                  <button onClick={(e) => { e.preventDefault(); handleDelete(s.id); }}
+                    className="w-8 h-8 rounded-full bg-card-bg shadow-card text-sm flex items-center justify-center hover:bg-empty">🗑</button>
+                </div>
+              )}
             </div>
           ))}
           <button onClick={() => { setEditingSubject(undefined); setShowModal(true); }}
