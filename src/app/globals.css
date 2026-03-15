@@ -2,13 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #fff8f0;
-  --foreground: #3d3535;
+@layer base {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: "Nunito", sans-serif;
+@keyframes pulse-today {
+  0%,
+  100% {
+    box-shadow: 0 0 4px rgba(255, 107, 107, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 8px rgba(255, 107, 107, 0.7);
+  }
+}
+
+.animate-pulse-today {
+  animation: pulse-today 2s ease-in-out infinite;
 }
