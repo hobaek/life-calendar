@@ -87,9 +87,9 @@ export default function LifeGrid({
 
   const unitKey = unit.slice(0, -1) as "day" | "week" | "month";
 
-  // Cell and gap sizes per unit
-  const cellSize = unit === "days" ? 4 : 10;
-  const gap = unit === "days" ? 1 : 3;
+  // Unified cell and gap sizes
+  const cellSize = 12;
+  const gap = 2;
 
   // Auto-fit columns to container width
   const columns =
@@ -109,8 +109,8 @@ export default function LifeGrid({
   // Fullscreen overlay
   if (expanded) {
     // In fullscreen, use larger cells
-    const expandedCellSize = unit === "days" ? 5 : 12;
-    const expandedGap = unit === "days" ? 1 : 3;
+    const expandedCellSize = 14;
+    const expandedGap = 2;
 
     return (
       <div className="fixed inset-0 z-50 bg-bg overflow-auto p-4 sm:p-8">
