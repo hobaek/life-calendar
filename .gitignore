@@ -38,6 +38,7 @@ yarn-error.log*
 
 # claude / internal
 .claude/
+docs/superpowers/
 MEMORY.md
 handoff.md
 mockup.html
