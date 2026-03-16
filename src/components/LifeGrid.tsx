@@ -145,7 +145,7 @@ export default function LifeGrid({
     <div
       ref={containerRef}
       className="bg-card-bg rounded-card p-6 shadow-card"
-      style={{ contentVisibility: "auto", contain: "strict" }}
+      style={{ contentVisibility: "auto" }}
     >
       <div className="flex items-center justify-between">
         {legend}
