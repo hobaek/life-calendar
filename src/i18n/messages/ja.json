@@ -1,0 +1,82 @@
+{
+  "landing": {
+    "title": "あと何回の土曜日が残っていますか？",
+    "description": "大切な人やペットと過ごせる残りの時間を視覚化しましょう。一つ一つのマスが一日、一週間、一瞬 — 大切にしましょう。",
+    "cta": "始める"
+  },
+  "dashboard": {
+    "reminder_label": "今日のリマインダー",
+    "reminder_message": "{name}と過ごせる土曜日はあと{weeks}回",
+    "empty_title": "大切な人を追加しましょう",
+    "empty_description": "一緒に過ごせる残りの時間を確認しましょう。",
+    "add": "追加する",
+    "onboarding_title": "まず、あなたについて教えてください",
+    "onboarding_description": "生年月日と予想寿命を入力すると、大切な人と一緒に過ごせる時間を正確に計算できます。",
+    "onboarding_step2_title": "次に、大切な人を追加しましょう",
+    "onboarding_step2_description": "両親、パートナー、ペット — 一緒にいる時間が大切な誰でも。"
+  },
+  "form": {
+    "add_title": "追加する",
+    "edit_title": "編集",
+    "emoji": "絵文字",
+    "color": "色",
+    "name": "名前",
+    "birth_date": "生年月日",
+    "lifespan": "予想寿命（年）",
+    "first_met": "出会った日（任意）",
+    "frequency": "会う頻度",
+    "frequency_count": "回数",
+    "not_set": "未設定",
+    "weekly": "毎週",
+    "monthly": "毎月",
+    "yearly": "毎年",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "add_btn": "追加"
+  },
+  "detail": {
+    "born": "{date}生まれ · 予想寿命: {years}歳",
+    "grid_label": "1マス = 1{unit}",
+    "lived": "過去",
+    "today": "今日",
+    "remaining": "残り",
+    "ratio_title": "一緒に過ごした時間 vs 残りの時間",
+    "ratio_passed": "一緒に過ごした時間の{percent}%が過ぎました",
+    "ratio_remaining": "残り{percent}%",
+    "days_remaining": "残りの日数",
+    "weeks_remaining": "残りの週数",
+    "months_remaining": "残りの月数",
+    "meetups_remaining": "残りの会える回数",
+    "birthdays_left": "残りの誕生日",
+    "springs": "残りの春",
+    "summers": "残りの夏",
+    "autumns": "残りの秋",
+    "winters": "残りの冬",
+    "share": "共有",
+    "copied": "コピーしました！",
+    "exceeded": "予想寿命を超えました — 毎日が贈り物です"
+  },
+  "units": {
+    "days": "日",
+    "weeks": "週",
+    "months": "月",
+    "day": "日",
+    "week": "週",
+    "month": "月"
+  },
+  "profile": {
+    "title": "あなたについて",
+    "description": "生年月日と予想寿命を設定すると、一緒に過ごせる時間をより正確に計算します。",
+    "birth_date": "生年月日",
+    "lifespan": "予想寿命",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "your_info": "自分",
+    "years_short": "歳"
+  },
+  "card": {
+    "weeks_left": "週 残り",
+    "years_left": "年 残り",
+    "born": "{year}年生 · 予想{lifespan}歳"
+  }
+}

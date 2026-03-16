@@ -1,0 +1,82 @@
+{
+  "landing": {
+    "title": "¿Cuántos sábados te quedan?",
+    "description": "Visualiza el tiempo que te queda con las personas y compañeros que amas. Cada cuadro es un día, una semana, un momento — haz que cada uno cuente.",
+    "cta": "Empezar a contar"
+  },
+  "dashboard": {
+    "reminder_label": "Recordatorio del día",
+    "reminder_message": "Te quedan {weeks} sábados con {name}",
+    "empty_title": "Empieza con alguien que amas",
+    "empty_description": "Añade una persona o mascota para ver cuánto tiempo les queda juntos.",
+    "add": "Añadir a alguien",
+    "onboarding_title": "Primero, cuéntanos sobre ti",
+    "onboarding_description": "Necesitamos tu fecha de nacimiento y esperanza de vida para calcular cuánto tiempo te queda con las personas que amas.",
+    "onboarding_step2_title": "Ahora, añade a alguien que amas",
+    "onboarding_step2_description": "Un padre, una pareja, una mascota — cualquiera cuyo tiempo contigo importa."
+  },
+  "form": {
+    "add_title": "Añadir a alguien",
+    "edit_title": "Editar",
+    "emoji": "Emoji",
+    "color": "Color",
+    "name": "Nombre",
+    "birth_date": "Fecha de nacimiento",
+    "lifespan": "Esperanza de vida (años)",
+    "first_met": "Primera vez que se conocieron (opcional)",
+    "frequency": "¿Con qué frecuencia se ven?",
+    "frequency_count": "Veces por período",
+    "not_set": "No establecido",
+    "weekly": "Semanal",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "add_btn": "Añadir"
+  },
+  "detail": {
+    "born": "Nacido/a el {date} · Esperanza de vida: {years} años",
+    "grid_label": "Cada cuadro = 1 {unit}",
+    "lived": "vivido",
+    "today": "hoy",
+    "remaining": "restante",
+    "ratio_title": "Tiempo juntos vs. Restante",
+    "ratio_passed": "{percent}% del tiempo juntos ya pasó",
+    "ratio_remaining": "{percent}% restante",
+    "days_remaining": "Días restantes",
+    "weeks_remaining": "Semanas restantes",
+    "months_remaining": "Meses restantes",
+    "meetups_remaining": "Encuentros restantes",
+    "birthdays_left": "Cumpleaños restantes",
+    "springs": "Primaveras restantes",
+    "summers": "Veranos restantes",
+    "autumns": "Otoños restantes",
+    "winters": "Inviernos restantes",
+    "share": "Compartir",
+    "copied": "¡Copiado!",
+    "exceeded": "Superó la esperanza de vida — cada día es un regalo"
+  },
+  "units": {
+    "days": "Días",
+    "weeks": "Semanas",
+    "months": "Meses",
+    "day": "día",
+    "week": "semana",
+    "month": "mes"
+  },
+  "profile": {
+    "title": "Sobre ti",
+    "description": "Establece tu fecha de nacimiento y esperanza de vida para calcular con mayor precisión el tiempo que les queda juntos.",
+    "birth_date": "Tu fecha de nacimiento",
+    "lifespan": "Edad esperada",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "your_info": "Tú",
+    "years_short": " años"
+  },
+  "card": {
+    "weeks_left": "semanas restantes",
+    "years_left": "años restantes",
+    "born": "Nacido/a en {year} · Esperanza {lifespan} años"
+  }
+}

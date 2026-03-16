@@ -1,0 +1,82 @@
+{
+  "landing": {
+    "title": "你还剩下多少个周六？",
+    "description": "将你与所爱之人和伙伴的剩余时间可视化。每一个格子都是一天、一周、一刻 — 让每一刻都有意义。",
+    "cta": "开始计算"
+  },
+  "dashboard": {
+    "reminder_label": "今日提醒",
+    "reminder_message": "你和{name}还剩{weeks}个周六",
+    "empty_title": "添加你爱的人",
+    "empty_description": "添加一个人或宠物，看看你们还能在一起多久。",
+    "add": "添加",
+    "onboarding_title": "首先，告诉我们关于你",
+    "onboarding_description": "输入你的出生日期和预期寿命，我们可以准确计算你和所爱之人还能在一起多久。",
+    "onboarding_step2_title": "现在，添加你爱的人",
+    "onboarding_step2_description": "父母、伴侣、宠物 — 任何你珍惜的人。"
+  },
+  "form": {
+    "add_title": "添加",
+    "edit_title": "编辑",
+    "emoji": "表情",
+    "color": "颜色",
+    "name": "名字",
+    "birth_date": "出生日期",
+    "lifespan": "预期寿命（年）",
+    "first_met": "初次见面（可选）",
+    "frequency": "见面频率",
+    "frequency_count": "每期次数",
+    "not_set": "未设置",
+    "weekly": "每周",
+    "monthly": "每月",
+    "yearly": "每年",
+    "cancel": "取消",
+    "save": "保存",
+    "add_btn": "添加"
+  },
+  "detail": {
+    "born": "出生于{date} · 预期寿命: {years}岁",
+    "grid_label": "每格 = 1{unit}",
+    "lived": "已过",
+    "today": "今天",
+    "remaining": "剩余",
+    "ratio_title": "已共度时光 vs 剩余时光",
+    "ratio_passed": "已共度时光的{percent}%已过去",
+    "ratio_remaining": "剩余{percent}%",
+    "days_remaining": "剩余天数",
+    "weeks_remaining": "剩余周数",
+    "months_remaining": "剩余月数",
+    "meetups_remaining": "剩余见面次数",
+    "birthdays_left": "剩余生日",
+    "springs": "剩余的春天",
+    "summers": "剩余的夏天",
+    "autumns": "剩余的秋天",
+    "winters": "剩余的冬天",
+    "share": "分享",
+    "copied": "已复制！",
+    "exceeded": "已超过预期寿命 — 每一天都是礼物"
+  },
+  "units": {
+    "days": "天",
+    "weeks": "周",
+    "months": "月",
+    "day": "天",
+    "week": "周",
+    "month": "月"
+  },
+  "profile": {
+    "title": "关于你",
+    "description": "设置你的出生日期和预期寿命，以便更准确地计算你们在一起的时间。",
+    "birth_date": "出生日期",
+    "lifespan": "预期寿命",
+    "save": "保存",
+    "cancel": "取消",
+    "your_info": "我",
+    "years_short": "岁"
+  },
+  "card": {
+    "weeks_left": "周 剩余",
+    "years_left": "年 剩余",
+    "born": "{year}年生 · 预期{lifespan}岁"
+  }
+}
