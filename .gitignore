@@ -40,6 +40,8 @@ yarn-error.log*
 .claude/
 docs/superpowers/
 MEMORY.md
+CLAUDE.md
+CHANGELOG.md
 handoff.md
 mockup.html
 
