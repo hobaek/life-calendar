@@ -20,6 +20,7 @@ const ME_SUBJECT_ID = "me";
 
 export default function DashboardPage() {
   const t = useTranslations("dashboard");
+  const tProfile = useTranslations("profile");
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [showModal, setShowModal] = useState(false);
@@ -51,7 +52,7 @@ export default function DashboardPage() {
     const existing = getSubjects().find((s) => s.id === ME_SUBJECT_ID);
     const meSubject: Subject = {
       id: ME_SUBJECT_ID,
-      name: "Me",
+      name: tProfile("me_name"),
       emoji: "🪞",
       avatarColor: "lavender",
       birthDate: profile.birthDate,
@@ -85,7 +86,7 @@ export default function DashboardPage() {
   }
 
   function handleDelete(id: string) {
-    if (confirm("Are you sure you want to remove this?")) {
+    if (confirm(t("confirm_delete"))) {
       deleteSubject(id);
       setSubjects(getSubjects());
     }

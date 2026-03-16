@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useParams, useSearchParams, useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Subject, GridUnit, UserProfile } from "@/lib/types";
 import { getSubjects, decodeSubjectFromUrl, getUserProfile } from "@/lib/storage";
 import {
@@ -22,6 +22,7 @@ import ShareButton from "@/components/ShareButton";
 
 function DetailPageInner() {
   const t = useTranslations("detail");
+  const locale = useLocale();
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -75,7 +76,7 @@ function DetailPageInner() {
           <div className="font-serif text-[28px] font-bold">{subject.name}</div>
           <div className="text-sm text-lc-text-light">
             {t("born", {
-              date: new Date(subject.birthDate).toLocaleDateString("en-US", {
+              date: new Date(subject.birthDate).toLocaleDateString(locale, {
                 month: "long", day: "numeric", year: "numeric"
               }),
               years: subject.expectedLifespan,

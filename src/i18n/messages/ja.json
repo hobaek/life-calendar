@@ -5,6 +5,7 @@
     "cta": "始める"
   },
   "dashboard": {
+    "confirm_delete": "本当に削除しますか？",
     "reminder_label": "今日のリマインダー",
     "reminder_message": "{name}と過ごせる土曜日はあと{weeks}回",
     "empty_title": "大切な人を追加しましょう",
@@ -40,6 +41,8 @@
     "lived": "過去",
     "today": "今日",
     "remaining": "残り",
+    "close": "閉じる",
+    "expand": "拡大",
     "ratio_title": "一緒に過ごした時間 vs 残りの時間",
     "ratio_passed": "一緒に過ごした時間の{percent}%が過ぎました",
     "ratio_remaining": "残り{percent}%",
@@ -65,6 +68,7 @@
     "month": "月"
   },
   "profile": {
+    "me_name": "自分",
     "title": "あなたについて",
     "description": "生年月日と予想寿命を設定すると、一緒に過ごせる時間をより正確に計算します。",
     "birth_date": "生年月日",

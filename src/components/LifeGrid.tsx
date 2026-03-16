@@ -113,14 +113,17 @@ export default function LifeGrid({
     const expandedGap = 2;
 
     return (
-      <div className="fixed inset-0 z-50 bg-bg overflow-auto p-4 sm:p-8">
+      <div
+        className="fixed inset-0 z-50 bg-bg overflow-auto p-4 sm:p-8"
+        style={{ contentVisibility: "auto", contain: "strict" }}
+      >
         <div className="flex items-center justify-between mb-4">
           {legend}
           <button
             onClick={() => setExpanded(false)}
             className="px-4 py-2 rounded-button bg-coral text-white text-sm font-semibold hover:opacity-90 transition-all"
           >
-            ✕ Close
+            ✕ {t("close")}
           </button>
         </div>
         <GridCells
@@ -139,14 +142,18 @@ export default function LifeGrid({
   }
 
   return (
-    <div ref={containerRef} className="bg-card-bg rounded-card p-6 shadow-card">
+    <div
+      ref={containerRef}
+      className="bg-card-bg rounded-card p-6 shadow-card"
+      style={{ contentVisibility: "auto", contain: "strict" }}
+    >
       <div className="flex items-center justify-between">
         {legend}
         <button
           onClick={() => setExpanded(true)}
           className="text-lc-text-light hover:text-coral text-sm font-semibold transition-all flex items-center gap-1 shrink-0"
         >
-          ⛶ Expand
+          ⛶ {t("expand")}
         </button>
       </div>
       {containerWidth > 0 && (

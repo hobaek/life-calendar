@@ -55,7 +55,18 @@ export function encodeSubjectForUrl(subject: Subject): string {
 
 export function decodeSubjectFromUrl(encoded: string): Subject | null {
   try {
-    return JSON.parse(decodeURIComponent(atob(encoded)));
+    const parsed = JSON.parse(decodeURIComponent(atob(encoded)));
+    if (
+      parsed &&
+      typeof parsed === "object" &&
+      typeof parsed.id === "string" &&
+      typeof parsed.name === "string" &&
+      typeof parsed.birthDate === "string" &&
+      typeof parsed.expectedLifespan === "number"
+    ) {
+      return parsed as Subject;
+    }
+    return null;
   } catch {
     return null;
   }

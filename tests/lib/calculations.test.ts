@@ -135,7 +135,7 @@ describe("getGridData", () => {
     vi.setSystemTime(new Date("2026-03-15"));
     const result = getGridData(mockSubject, "days");
     expect(result.total).toBe(85 * 365);
-    expect(result.columns).toBe(52);
+    expect(result.columns).toBe(365);
     vi.useRealTimers();
   });
 });

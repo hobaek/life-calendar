@@ -5,6 +5,7 @@
     "cta": "시작하기"
   },
   "dashboard": {
+    "confirm_delete": "정말 삭제하시겠습니까?",
     "reminder_label": "오늘의 알림",
     "reminder_message": "{name}과(와) 남은 토요일: {weeks}번",
     "empty_title": "사랑하는 사람을 추가해보세요",
@@ -40,6 +41,8 @@
     "lived": "지남",
     "today": "오늘",
     "remaining": "남음",
+    "close": "닫기",
+    "expand": "확대",
     "ratio_title": "함께한 시간 vs 남은 시간",
     "ratio_passed": "함께한 시간의 {percent}%가 지났습니다",
     "ratio_remaining": "{percent}% 남음",
@@ -65,6 +68,7 @@
     "month": "월"
   },
   "profile": {
+    "me_name": "나",
     "title": "내 정보",
     "description": "생년월일과 예상 수명을 설정하면, 상대방과 함께할 수 있는 시간을 더 정확하게 계산합니다.",
     "birth_date": "생년월일",

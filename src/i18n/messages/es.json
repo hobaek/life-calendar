@@ -5,6 +5,7 @@
     "cta": "Empezar a contar"
   },
   "dashboard": {
+    "confirm_delete": "¿Estás seguro de que quieres eliminar esto?",
     "reminder_label": "Recordatorio del día",
     "reminder_message": "Te quedan {weeks} sábados con {name}",
     "empty_title": "Empieza con alguien que amas",
@@ -40,6 +41,8 @@
     "lived": "vivido",
     "today": "hoy",
     "remaining": "restante",
+    "close": "Cerrar",
+    "expand": "Expandir",
     "ratio_title": "Tiempo juntos vs. Restante",
     "ratio_passed": "{percent}% del tiempo juntos ya pasó",
     "ratio_remaining": "{percent}% restante",
@@ -65,6 +68,7 @@
     "month": "mes"
   },
   "profile": {
+    "me_name": "Yo",
     "title": "Sobre ti",
     "description": "Establece tu fecha de nacimiento y esperanza de vida para calcular con mayor precisión el tiempo que les queda juntos.",
     "birth_date": "Tu fecha de nacimiento",

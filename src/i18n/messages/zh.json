@@ -5,6 +5,7 @@
     "cta": "开始计算"
   },
   "dashboard": {
+    "confirm_delete": "确定要删除吗？",
     "reminder_label": "今日提醒",
     "reminder_message": "你和{name}还剩{weeks}个周六",
     "empty_title": "添加你爱的人",
@@ -40,6 +41,8 @@
     "lived": "已过",
     "today": "今天",
     "remaining": "剩余",
+    "close": "关闭",
+    "expand": "展开",
     "ratio_title": "已共度时光 vs 剩余时光",
     "ratio_passed": "已共度时光的{percent}%已过去",
     "ratio_remaining": "剩余{percent}%",
@@ -65,6 +68,7 @@
     "month": "月"
   },
   "profile": {
+    "me_name": "我",
     "title": "关于你",
     "description": "设置你的出生日期和预期寿命，以便更准确地计算你们在一起的时间。",
     "birth_date": "出生日期",
