@@ -36,6 +36,12 @@ yarn-error.log*
 # vercel
 .vercel
 
+# claude / internal
+.claude/
+MEMORY.md
+handoff.md
+mockup.html
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
